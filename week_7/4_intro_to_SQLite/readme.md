@@ -107,7 +107,7 @@ Now add a column to the users table for "nicknames".  You'll need to use the `AL
 
 Make sure the schema was updated by typing `.schema`.  Your new `nickname` column should appear last.
 
-Now add a nickname for Kimmy (In elementary school she was called "Kimchee") and one for yourself.  Use the `UPDATE` statement.
+Now add a nickname for Kimmy (In elementary school she was called "Kimchee") and one for yourself.  Use the .. statement.
 
 Use a select statement to see the database entries, they should include the new nicknames!
 
