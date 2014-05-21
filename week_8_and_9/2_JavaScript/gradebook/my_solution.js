@@ -7,7 +7,7 @@ variables match (i.e., 'Joseph' is the first element in students; his scores are
 
 Do not alter the students and scores code.
 
-I worked on this challenge [by myself, with:]
+I worked on this challenge by myself.
 
 */
 
@@ -19,14 +19,39 @@ var scores = [ [80, 70, 70, 100],
                [100, 90, 95, 85] ]
 
 
-
-
-
-
 // __________________________________________
 // Write your code below.
 
+var average = function(array) {
+  var sum = 0;
+  for (var i = 0; i < array.length; i++) {
+    sum += array[i];
+   }  
+  var average = sum / array.length;
+  return average;
+}
 
+
+var gradebook = {
+    Joseph: {name: "Joseph", testScores: scores[0]},
+    Susan: {name: "Susan", testScores: scores[1]},
+    William: {name: "William", testScores: scores[2]},
+    Elizabeth: {name: "Elizabeth", testScores: scores[3]},
+  
+  addScore: function(name_entry, score) {
+      gradebook[name_entry].testScores.push(score);
+    },
+
+  getAverage: function(name_entry) {
+    var sum = 0;
+      for (var i = 0; i < gradebook[name_entry].testScores.length; i++) {
+          sum += gradebook[name_entry].testScores[i];
+      }  
+    var average = sum / gradebook[name_entry].testScores.length
+    return average;
+    }
+
+}
 
 
 
@@ -34,22 +59,18 @@ var scores = [ [80, 70, 70, 100],
 // __________________________________________
 // Refactored Solution
 
-
-
-
-
-
-
+// Only an average function and push function, as well as defining an object, are done above.
+// Some variable renaming might benefit the code (e.g. name instead of name_entry) but I don't see much room for value add refactoring.
 
 // __________________________________________
 // Reflect
 
-
-
-
-
-
-
+// JavaScript notation / syntax is far more difficult than Ruby.
+// What mainly added to the time it took to solve this challenge was missing colons, semi-colons and commas for separating object properties.
+// Sublime really isn't the best environment for working in JS - an IDE even like the one in CodeAcademy labs will provide syntax corrections.
+// Also, JS unlike Ruby will not evaluate the last expression in a function - return statements really are necessary.
+// Like Java (as I recall from my college days), it's important in JS to keep track of your parens and }s.
+// Just based on syntax alone, I prefer Ruby to JS.
 
 
 // __________________________________________
