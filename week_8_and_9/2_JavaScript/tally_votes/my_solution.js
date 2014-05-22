@@ -1,7 +1,13 @@
 // U3.W8-9: Gradebook from Names and Scores
 
-// I worked on this challenge [by myself, with:]
+// I worked on this challenge by myself but received a useful piece of advice / code from Hing Huynh.
 
+// Pseudocode
+
+// To tally votes:
+    // Iterate through each voter 
+        // Iterate through each position
+        // Create separate objects representing possible elect for each position with votes
 // These are the votes cast by each student. Do not alter these objects here.
 var votes = {
   "Alex": { president: "Bob", vicePresident: "Devin", secretary: "Gail", treasurer: "Kerry" },
@@ -32,13 +38,74 @@ var votes = {
   "Zane": { president: "Louise", vicePresident: "Hermann", secretary: "Fred", treasurer: "Mary" }
 }
 
+
 // Tally the votes in voteCount.
 var voteCount = {
+   tally: function(position){
+   array = [];
+   count = [];
+   new_array = [];
+   counter = 1; 
+   // represents votes: start at one since individual votes are worth 1
+   new_array_counter = 0;
+   // represents new_array slots
+   for (var key in votes) {
+   var obj = votes[key];
+   for (var prop in obj) {
+      // important check that this is objects own property 
+      // not from prototype prop inherited
+      if(obj.hasOwnProperty(prop) && prop == position) {
+          array.push(obj[prop]);
+      }
+   }
+ }   
+
+array.push("X");
+// Solves the last element issue
+array.sort();
+ for (i = 0; i < array.length-1; i++) {
+ if (array[i] == array[i+1]) {
+    counter++;
+ }   
+ if (array[i] !== array[i+1]){
+    count.push(counter);
+    counter = 1;
+    new_array.push([array[i], count[new_array_counter]]);
+    new_array_counter++;
+}
+}
+new_array.sort(function(a, b) { 
+    return a[1] < b[1]?1:-1;
+});
+return new_array;
+},
+
   president: {},
   vicePresident: {},
   secretary: {},
   treasurer: {}
 }
+
+president_array = voteCount.tally("president");
+for (student in president_array){
+    voteCount["president"][president_array[student][0]] = president_array[student][1];
+}
+
+vice_president_array = voteCount.tally("vicePresident");
+for (student in vice_president_array){
+    voteCount["vicePresident"][vice_president_array[student][0]] = vice_president_array[student][1];
+}
+
+secretary_array = voteCount.tally("secretary");
+for (student in secretary_array){
+    voteCount["secretary"][secretary_array[student][0]] = secretary_array[student][1];
+}
+
+treasurer_array = voteCount.tally("treasurer");
+for (student in treasurer_array){
+    voteCount["treasurer"][treasurer_array[student][0]] = treasurer_array[student][1];
+}
+
 
 /* The name of each student receiving a vote for an office should become a property 
 of the respective office in voteCount.  After Alex's votes have been tallied, 
@@ -57,20 +124,11 @@ voteCount would be ...
 /* Once the votes have been tallied, assign each officer position the name of the 
 student who received the most votes. */
 var officers = {
-  president: undefined,
-  vicePresident: undefined,
-  secretary: undefined,
-  treasurer: undefined
+  president: voteCount.tally("president")[0][0],
+  vicePresident: voteCount.tally("vicePresident")[0][0],
+  secretary: voteCount.tally("secretary")[0][0],
+  treasurer: voteCount.tally("treasurer")[0][0]
 }
-
-// Pseudocode
-
-
-// __________________________________________
-// Initial Solution
-
-
-
 
 
 
