@@ -137,15 +137,49 @@ var officers = {
 // Refactored Solution
 
 
+// I did not realize when originally doing this challenge that we were not supposed
+// to modify the objects inside of the objects themselves.
+// After taking a look at Hing Huynh's code, I realize a more elegant solution
+// was to modify the objects outside of the object brackets. 
+// Below, I've pasted Hing's code (in caps) and went line by line to explain his process.
 
+
+// for (var voter in votes) {  // FOR EACH VOTER OBJECT (E.G. ALEX) IN VOTES
+//     for (var office in votes[voter]) { () // FOR EACH OFFICE (E.G. PRESIDENT) IN EACH VOTER (E.G. ALEX)
+//             if (voteCount[office][votes[voter][office]] == undefined) { // NOW THAT OFFICE IS DEFINED, SEE IF 
+                // EX. PRESIDENT[ALEX[PRESIDENT]] => PRESIDENT[BOB] => BOB DOESN'T HAVE ANY PROPERTIES
+//                 voteCount[office][votes[voter][office]] = 1; // IF SO, LET THE TALLY EQUAL 1
+//             }
+//             else {                                            
+//                 voteCount[office][votes[voter][office]] += 1; // IF NOT UNDEFINED, ADD 1 TO THE TALLY
+                // USING ABOVE, WE'VE MADE PRESIDENT[BOB] = 1
+//             }        
+//      }
+// }
+
+// for (var position in voteCount ) { // FOR LOOP WITH SORTING COMPARISON WHEREIN HIGHEST VOTE IS CONTINUALLY CHECKED
+//     var highestVote = 0; // SET HIGHEST VOTE TO 0
+//     for (var candidate in voteCount[position]){ // GO THROUGH EACH POTENTIAL ELECT FOR EACH POSITION
+//         if (voteCount[position][candidate] > highestVote) { //IF THE VOTES FOR THAT CANDIDATE IS MORE THAN HIGHEST VOTE
+//             highestVote = voteCount[position][candidate]; // MAKE HIGHEST VOTE EQUAL TO THAT CANDIDATE'S TOTAL VOTES
+//             officers[position] = candidate; // MAKE THAT CANDIDATE THE POSITION 
+//         }   
+//      }
+// }
 
 
 
 // __________________________________________
 // Reflection
 
-
-
+//Hing and I took opposite routes to passing the tests here.
+//I think Hing's solution was truer to the "lesson" this exercise sought to teach - how to use nested loops in JavaScript for object properties.
+//Specifically, Hing's code was excellent at using the (var x in object[object]) set up.
+//When writing code like this, it's essential to have either visuals or a good mental working diagram of what's going on.
+//I found that commenting out Hing's code made it significantly easier to understand.
+//My own code perhaps took a Ruby approach to a JavaScript problem.
+//I saw a problem that looked like it needed a frequency table, so I immediately built an array of arrays (I would have used a hash if in Ruby). 
+//Really, I think in retrospect the right approach is to loop through object properties - thanks again Hing for your great solution here. 
 
 
 
