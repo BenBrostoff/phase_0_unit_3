@@ -54,10 +54,6 @@ def print_specific_states(*states)
 	
 end
 
-def vote_tally
-	puts "LEADING VOTE RECIPIENTS"
-	vote_recipients = $db.execute("SELECT name, ")
-
 def print_separator
   puts 
   puts "------------------------------------------------------------------------------"
@@ -121,3 +117,4 @@ print_specific_states("NJ", "NY", "MN", "FL", "AK")
 # As previously noted, each row represents an element in the array and each column an element in the array of arrays (left to right ascending).
 
 
+# Note I completed this challenge in Week 7. 

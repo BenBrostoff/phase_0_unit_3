@@ -8,7 +8,6 @@
 
 // See pseudocode on Ruby challenge and reflection.
 
-
 // 3. Initial Solution
 
 function CreditCard (num) {
