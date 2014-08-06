@@ -12,9 +12,7 @@ class Controller
   end
 
   def home
-    view.option_display
-    option = gets.chomp.to_i
-    route_choose(option)
+    route_choose(view.option_display)
   end
 
   def reprompt

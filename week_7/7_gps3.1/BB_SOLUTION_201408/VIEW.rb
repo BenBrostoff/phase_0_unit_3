@@ -16,6 +16,7 @@ class GroceryView
     option_array.each_with_index do |option, index|
       puts "#{index + 1}. #{option}"
     end
+    return gets.chomp.to_i
   end
 
   def error_display
