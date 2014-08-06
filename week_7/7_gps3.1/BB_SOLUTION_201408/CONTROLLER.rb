@@ -24,7 +24,7 @@ class Controller
     add_item if option == 1
     display_list if option == 2
     remove_item if option == 3
-    change_unit if option == 4
+    change_item if option == 4
     done if option == 5
     reprompt if option == 0 || option > 5 || option == ""
   end
@@ -36,6 +36,13 @@ class Controller
 
     list.add_item(GroceryItem.new(item, quantity, unit))
     view.add_item_confirm(item, quantity, unit)
+
+    view.back_to_home
+    home
+  end
+
+  def display_list
+    list.display_list
 
     view.back_to_home
     home
@@ -54,10 +61,19 @@ class Controller
     end
   end
 
-  def display_list
-    list.display_list
+  def change_item
+    item = list.list[view.change_item_display - 1]
+    old_quantity = item.quantity
+    old_unit = item.unit
 
-    view.back_to_home
+    new_quantity = view.quantity_change_prompt(item.item)
+    new_unit = view.unit_change_prompt(item.item)
+
+    item.update(new_quantity, new_quantity)
+
+    view.quantity_change_confirm(item.item, old_quantity, new_quantity)
+    view.unit_change_confirm(item.item, old_unit, new_unit)
+
     home
   end
 

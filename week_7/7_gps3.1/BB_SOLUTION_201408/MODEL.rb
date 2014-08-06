@@ -7,6 +7,11 @@ class GroceryItem
     @quantity = quantity
     @unit = unit
   end
+
+  def update(quantity, unit)
+    @quantity = quantity
+    @unit = unit
+  end
   
 end
 
@@ -25,14 +30,6 @@ class GroceryList
   def remove_item(list_number)
     item_index = list_number - 1
     @list.delete_at(item_index)
-  end
-
-  def change_quantity(grocery, new_qty)
-    grocery.quantity = new_qty
-  end
-
-  def change_unit(grocery, new_unit)
-    grocery.unit = new_unit
   end
 
   def show_length 

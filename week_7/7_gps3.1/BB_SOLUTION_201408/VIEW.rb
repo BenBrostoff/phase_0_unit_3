@@ -46,8 +46,23 @@ class GroceryView
     puts "You added #{quantity} #{item}s, measured in #{unit}, to your list."
   end
 
+  def change_item_display
+    puts "What number item do you want to change?"
+    gets.chomp.to_i
+  end
+
+  def quantity_change_prompt(item)
+    puts "How many #{item}s do you want?"
+    gets.chomp.to_i
+  end
+
+  def unit_change_prompt(item)
+    puts "What do you want to measure #{item} in?"
+    gets.chomp
+  end
+
   def quantity_change_confirm(item_name, old_q, new_q)
-    puts "You changed the quantity of #{item_name} from #{old_q} to#{new_q}"
+    puts "You changed the quantity of #{item_name} from #{old_q} to #{new_q}"
   end
 
   def unit_change_confirm(item_name, old_m, new_m)
