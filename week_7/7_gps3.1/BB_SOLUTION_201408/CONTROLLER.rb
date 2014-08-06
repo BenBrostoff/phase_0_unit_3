@@ -62,6 +62,7 @@ class Controller
   end
 
   def change_item
+    list.display_list
     item = list.list[view.change_item_display - 1]
     old_quantity = item.quantity
     old_unit = item.unit
@@ -69,7 +70,7 @@ class Controller
     new_quantity = view.quantity_change_prompt(item.item)
     new_unit = view.unit_change_prompt(item.item)
 
-    item.update(new_quantity, new_quantity)
+    item.update(new_quantity, new_unit)
 
     view.quantity_change_confirm(item.item, old_quantity, new_quantity)
     view.unit_change_confirm(item.item, old_unit, new_unit)
