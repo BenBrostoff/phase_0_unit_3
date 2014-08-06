@@ -24,18 +24,25 @@ class GroceryView
 
   def item_prompt
     puts "What item do you want to add?"
+    return gets.chomp
   end
 
   def quantity_prompt
     puts "How many of the item do you want?"
+    return gets.chomp
   end
 
-  def measurement_prompt
+  def unit_prompt
     puts "What unit of measurement will you be using?"
+    return gets.chomp
   end
 
   def item_display
     puts "Here's your list thus far: "
+  end
+
+  def add_item_confirm(item, quantity, unit)
+    puts "You added #{quantity} #{item}s, measured in #{unit}, to your list."
   end
 
   def quantity_change_confirm(item_name, old_q, new_q)
@@ -48,6 +55,11 @@ class GroceryView
 
   def goodbye_message
     puts "Thanks for using Ben's command line tool!"
+  end
+
+  def back_to_home
+    puts "Press enter to return home"
+    gets.chomp
   end
 
 end

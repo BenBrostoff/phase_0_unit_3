@@ -11,6 +11,9 @@ class GroceryItem
 end
 
 class GroceryList
+
+  attr_accessor :list
+
   def initialize
     @list = []
   end

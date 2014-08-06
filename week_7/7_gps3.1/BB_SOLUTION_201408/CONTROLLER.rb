@@ -3,21 +3,21 @@ require_relative 'VIEW'
 
 class Controller
 
-  attr_accessor :view
+  attr_accessor :view, :list
 
   def initialize
     @view = GroceryView.new
+    @list = GroceryList.new 
   end
 
-  def start
-    view.start_display
+  def home
     view.option_display
     return gets.chomp.to_i
   end
 
   def reprompt
     view.error_display
-    start
+    home
   end
 
   def route_choose(option)
@@ -26,10 +26,27 @@ class Controller
     remove_item if option == 3
     change_unit if option == 4
     done if option == 5
-    reprompt if option == 0 || option > 5
+    reprompt if option == 0 || option > 5 || option == ""
+  end
+
+  def add_item
+    item = view.item_prompt
+    quantity = view.quantity_prompt
+    unit = view.unit_prompt
+
+    list.add_item(GroceryItem.new(item, quantity, unit))
+    view.add_item_confirm(item, quantity, unit)
+
+    #back home
+  end   
+
+  def display_list
+    list.display_list
+    view.back_to_home
+    home
   end
 
 end
 
 controller = Controller.new
-controller.route_choose(controller.start)
+controller.route_choose(controller.home)
