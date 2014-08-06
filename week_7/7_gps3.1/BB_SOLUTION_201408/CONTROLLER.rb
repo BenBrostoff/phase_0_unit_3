@@ -8,11 +8,13 @@ class Controller
   def initialize
     @view = GroceryView.new
     @list = GroceryList.new 
+    home
   end
 
   def home
     view.option_display
-    return gets.chomp.to_i
+    option = gets.chomp.to_i
+    route_choose(option)
   end
 
   def reprompt
@@ -37,7 +39,7 @@ class Controller
     list.add_item(GroceryItem.new(item, quantity, unit))
     view.add_item_confirm(item, quantity, unit)
 
-    #back home
+    home
   end   
 
   def display_list
@@ -49,4 +51,4 @@ class Controller
 end
 
 controller = Controller.new
-controller.route_choose(controller.home)
+
