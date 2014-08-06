@@ -39,13 +39,32 @@ class Controller
     list.add_item(GroceryItem.new(item, quantity, unit))
     view.add_item_confirm(item, quantity, unit)
 
+    view.back_to_home
     home
-  end   
+  end
+
+  def remove_item
+    list.display_list
+    option = view.remove_item_display
+    if option != 0 && option <= list.list.length
+      remove_item(option)
+      remove_item_confirm(list[option - 1].item)
+      home
+    else
+      view.error_display
+      remove_item
+    end
+  end
 
   def display_list
     list.display_list
+
     view.back_to_home
     home
+  end
+
+  def done
+    view.exit 
   end
 
 end

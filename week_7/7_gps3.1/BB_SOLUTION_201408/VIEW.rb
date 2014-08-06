@@ -53,6 +53,15 @@ class GroceryView
     puts "You changed the unit of measurement of #{item_name} from #{old_m} to #{new_m}"
   end
 
+  def remove_item_display
+    puts "What number item do you want to remove?"
+    option = gets.chomp.to_i
+  end
+
+  def remove_item_confirm(item)
+    puts "Your #{item} was successfully removed"
+  end
+
   def goodbye_message
     puts "Thanks for using Ben's command line tool!"
   end
@@ -60,6 +69,10 @@ class GroceryView
   def back_to_home
     puts "Press enter to return home"
     gets.chomp
+  end
+
+  def exit
+    puts "Thanks for using Ben's Grocery List App!"
   end
 
 end
